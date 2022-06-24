@@ -23,7 +23,13 @@ impl AppContext{
     }
 
     pub async fn setup_and_start(app: Arc<AppContext>, settings: Arc<SettingsModel>) {
-        setup_and_start_binance_ws(app.clone(), settings.tickers_to_subscribe.clone());
+
+        let app_for_spawn = app.clone();
+        let settings_for_spawn = settings.clone();
+        tokio::spawn(async move {
+            setup_and_start_binance_ws(app_for_spawn.clone(), settings_for_spawn.tickers_to_subscribe.clone());
+        });
+        
         let tcp_server = setup_price_tcp_server(app.clone(), settings.clone());
         tcp_server.start().await;
         app.is_initialized.store(true, Ordering::Relaxed);

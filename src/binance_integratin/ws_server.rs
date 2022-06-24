@@ -24,7 +24,14 @@ pub fn setup_and_start_binance_ws(app: Arc<AppContext>, tickers: Vec<String>) {
         handle_event(event, app.clone())
     });
     web_socket.connect_multiple_streams(&endpoints).unwrap();
+
     print!("Connected to binance websocket");
+    if let Err(e) = web_socket.event_loop(&app.is_initialized) {
+        println!("Error: {:?}", e);
+    }
+
+    web_socket.disconnect().unwrap();
+
 }
 
 fn handle_event(event: WebsocketEvent, app: Arc<AppContext>) -> Result<(),binance::errors::Error >{
