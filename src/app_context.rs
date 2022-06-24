@@ -1,11 +1,11 @@
 use std::sync::{Arc, atomic::{AtomicBool, Ordering}};
 
-use my_tcp_sockets::{tcp_connection::SocketConnection, TcpServer};
+use my_tcp_sockets::{tcp_connection::SocketConnection};
 use price_src_tcp_shared::{SourceFeedSerializer, BidAskContract};
 use rust_extensions::ApplicationStates;
 use tokio::sync::Mutex;
 
-use crate::{SettingsModel, setup_and_start_binance_ws, setup_price_tcp_server, PriceRouterTcpServer};
+use crate::{SettingsModel, setup_and_start_binance_ws, setup_price_tcp_server};
 
 pub struct AppContext{
     pub connections: Mutex<Vec<Arc<SocketConnection<BidAskContract, SourceFeedSerializer>>>>,
