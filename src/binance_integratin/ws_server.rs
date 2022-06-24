@@ -14,9 +14,10 @@ pub fn setup_and_start_binance_ws(app: Arc<AppContext>, tickers: Vec<String>) {
         endpoints.push(format!("{}@depth@100ms", symbol.to_lowercase()));
     }
  
+    println!("Connecting to Binance websocket... Tickers: {:?}", endpoints);
     let mut web_socket: WebSockets<'_> = WebSockets::new(|event| {
         if !app.is_initialized.load(Ordering::Relaxed) {
-            print!("Handled message from binance but skip. App is not initialized.");
+            print!("Handled message from binance, but skip. App is not initialized.");
             return Ok(());
         }
 

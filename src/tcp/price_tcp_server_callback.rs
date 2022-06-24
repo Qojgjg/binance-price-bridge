@@ -22,6 +22,7 @@ impl SocketEventCallback<BidAskContract, SourceFeedSerializer> for Callback{
         match connection_event{
             ConnectionEvent::Connected(connection) => {
                 let mut write = self.app.connections.lock().await;
+                println!("handled new connection");
                 write.push(connection);
                 
             },
