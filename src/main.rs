@@ -12,7 +12,7 @@ use std::{sync::Arc, time::Duration};
 
 #[tokio::main]
 async fn main() {
-    let settings = Arc::new(SettingsModel::load(".enonpay").await);
+    let settings = Arc::new(SettingsModel::load(".reachpay").await);
     let app = Arc::new(AppContext::new(settings.clone()));
     crate::app_context::setup_and_start(&app, settings.clone()).await;
 
