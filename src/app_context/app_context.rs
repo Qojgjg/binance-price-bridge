@@ -23,20 +23,20 @@ impl AppContext {
             logger: Arc::new(MyLogger::to_console()),
         }
     }
+}
 
-    pub async fn setup_and_start(self: Arc<AppContext>, settings: Arc<SettingsModel>) {
-        let app_for_spawn = self.clone();
-        let settings_for_spawn = settings.clone();
-        tokio::spawn(async move {
-            setup_and_start_binance_ws(
-                app_for_spawn.clone(),
-                settings_for_spawn.tickers_to_subscribe.clone(),
-            );
-        });
+pub async fn setup_and_start(app_ctx: &Arc<AppContext>, settings: Arc<SettingsModel>) {
+    let app_for_spawn = app_ctx.clone();
+    let settings_for_spawn = settings.clone();
+    tokio::spawn(async move {
+        setup_and_start_binance_ws(
+            app_for_spawn.clone(),
+            settings_for_spawn.tickers_to_subscribe.clone(),
+        );
+    });
 
-        let tcp_server = setup_price_tcp_server(self.clone(), settings.clone());
-        tcp_server.start().await;
+    let tcp_server = setup_price_tcp_server(app_ctx.clone(), settings.clone());
+    tcp_server.start().await;
 
-        self.app_states.set_as_initialized();
-    }
+    app_ctx.app_states.set_as_initialized();
 }

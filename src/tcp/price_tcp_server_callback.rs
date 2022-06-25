@@ -37,7 +37,7 @@ impl SocketEventCallback<BidAskContract, SourceFeedSerializer> for Callback {
                 payload,
             } => {
                 if payload.is_ping() {
-                    connection.send(BidAskContract::Pong);
+                    connection.send(BidAskContract::Pong).await;
                 }
                 println!("Received payload from {:?}", payload);
             }

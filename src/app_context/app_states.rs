@@ -3,7 +3,7 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use rust_extensions::ApplicationStates;
 
 pub struct AppStates {
-    is_initialized: AtomicBool,
+    pub is_initialized: AtomicBool,
     is_shutting_down: AtomicBool,
 }
 
