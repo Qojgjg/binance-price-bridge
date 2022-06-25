@@ -540,8 +540,8 @@ dependencies = [
 
 [[package]]
 name = "my-logger"
-version = "0.1.1"
-source = "git+https://github.com/MyJetTools/my-logger.git?branch=0.1.1#7a0232abc8f10e58f526aadc738d562347350617"
+version = "0.1.2"
+source = "git+https://github.com/MyJetTools/my-logger.git?branch=0.1.2#815906efe1a96949ad5873e2dfcec9ff31a68b68"
 dependencies = [
  "rust-extensions",
 ]
@@ -557,11 +557,10 @@ dependencies = [
 
 [[package]]
 name = "my-tcp-sockets"
-version = "0.1.0"
-source = "git+https://github.com/MyJetTools/my-tcp-sockets.git?branch=0.1.2#41368de670aa5dbb7d54a53b0e594a0111a2d82b"
+version = "0.1.3"
+source = "git+https://github.com/MyJetTools/my-tcp-sockets.git?branch=0.1.3#57f5975e6cbbbd582057950879cdcfb41a2ce419"
 dependencies = [
  "async-trait",
- "my-logger",
  "rust-extensions",
  "tokio",
  "tokio-util",
@@ -735,7 +734,7 @@ checksum = "eb9f9e6e233e5c4a35559a617bf40a4ec447db2e84c20b55a6f83167b7e57872"
 [[package]]
 name = "price-src-tcp-shared"
 version = "0.1.1"
-source = "git+https://github.com/ReachPay/price-src-tcp-shared.git?branch=0.1.2#8512d2341350dde4214ba0c13b0416a3da6529af"
+source = "git+https://github.com/ReachPay/price-src-tcp-shared.git?branch=0.1.2#d620dddda7334b5f87a91aa048eba1826ec94405"
 dependencies = [
  "async-trait",
  "chrono",
@@ -849,7 +848,7 @@ dependencies = [
 [[package]]
 name = "rust-extensions"
 version = "0.1.0"
-source = "git+https://github.com/MyJetTools/rust-extensions.git?branch=main#9364f07df586aa92462ee58a28ad8cfa2bf3ed0b"
+source = "git+https://github.com/MyJetTools/rust-extensions.git?branch=0.1.0#44387fa24774c0afc08bed8ca93580bcbe803290"
 dependencies = [
  "async-trait",
  "chrono",
@@ -999,9 +998,9 @@ checksum = "eb703cfe953bccee95685111adeedb76fabe4e97549a58d16f03ea7b9367bb32"
 
 [[package]]
 name = "smallvec"
-version = "1.8.0"
+version = "1.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f2dd574626839106c320a323308629dcb1acfc96e32a8cba364ddc61ac23ee83"
+checksum = "cc88c725d61fc6c3132893370cac4a0200e3fedf5da8331c570664b1987f5ca2"
 
 [[package]]
 name = "socket2"
@@ -1217,9 +1216,9 @@ checksum = "5bd2fe26506023ed7b5e1e315add59d6f584c621d037f9368fea9cfb988f368c"
 
 [[package]]
 name = "unicode-normalization"
-version = "0.1.19"
+version = "0.1.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d54590932941a9e9266f0832deed84ebe1bf2e4c9e4a3554d393d18f5e854bf9"
+checksum = "81dee68f85cab8cf68dec42158baf3a79a1cdc065a8b103025965d6ccb7f6cbd"
 dependencies = [
  "tinyvec",
 ]

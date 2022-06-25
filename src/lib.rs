@@ -1,9 +1,9 @@
 mod app_context;
-mod binance_integratin;
-mod tcp;
+mod binance_integration;
 mod settings;
+mod tcp;
 
 pub use app_context::*;
-pub use binance_integratin::*;
-pub use tcp::*;
+pub use binance_integration::*;
 pub use settings::*;
+pub use tcp::*;
