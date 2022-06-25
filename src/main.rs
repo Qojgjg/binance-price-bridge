@@ -10,15 +10,19 @@ pub use tcp::*;
 
 use std::{sync::Arc, time::Duration};
 
-use tokio::time::sleep;
-
 #[tokio::main]
 async fn main() {
     let settings = Arc::new(SettingsModel::load(".enonpay").await);
     let app = Arc::new(AppContext::new(settings.clone()));
     crate::app_context::setup_and_start(&app, settings.clone()).await;
 
-    loop {
-        sleep(Duration::from_secs(5)).await;
+    signal_hook::flag::register(
+        signal_hook::consts::SIGTERM,
+        app.app_states.is_shutting_down.clone(),
+    )
+    .unwrap();
+
+    while !app.app_states.is_shutting_down() {
+        tokio::time::sleep(Duration::from_secs(1)).await;
     }
 }
